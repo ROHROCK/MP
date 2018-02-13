@@ -1,6 +1,9 @@
+;Write x86/x64 ALP to count number of postive and negative numbers from the array
+;SECOA-4
+;Roll number: 82
 section .data #This section is used to initalize the variables
   msg db 10,'Count positive and negative numbers in an array',10
-  msg_len equ $-msg
+  msg_len equ $-msg ;
 
   pmsg db 10,'Count of positive numbers:'
   pmsg_len equ $-pmsg
@@ -9,8 +12,8 @@ section .data #This section is used to initalize the variables
   nmsg_len equ $-nmsg
 
   nwline db 10h
-  array dq 8505h,90ffh,87h,8a9fh,0adh,02h ;The array data in HEX values
-  arrcnt equ 7 ; The
+  array dq 888fh,9bh,0ch,0dh,0dh,10h,20h ;The array data in HEX values
+  arrcnt equ 7 ;
   pcnt db 0
   ncnt db 0
 
