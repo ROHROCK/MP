@@ -322,3 +322,29 @@ cont1:	mov al,[rsi]
 
 skip2:
 ret
+;------OUTPUT--------
+;./fileoperation
+;MENU :
+;1. TYPE
+;2. COPY
+;3. DELETE
+;4. Exit
+;Enter your choice : 1
+;Command : type test.txt
+;this is a test file
+;MENU :
+;1. TYPE
+;2. COPY
+;3. DELETE
+;4. Exit
+;Enter your choice : 2
+;Command : copy test2.txt test.txt
+;File copied successfully !!
+;MENU :
+;1. TYPE
+;2. COPY
+;3. DELETE
+;4. Exit
+;Enter your choice : 3
+;Command : del test2.txt
+;File deleted successfully !!

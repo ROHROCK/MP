@@ -189,3 +189,30 @@ dec rcx
 jnz cnt
 print char_ans,4
 ret
+;-----------------OUTPUT-----------------
+;MPL assignment 04: Hex to bcd and bcd to hex
+;--------------------------------------------------
+;------Menu--------
+;1.Hex to bcd
+;2.BCD to hex
+;3.Exit
+
+;Enter your choice:1
+
+
+;Hex to BCD
+;Enter the 4-digit Hex number:FAB0
+
+;Equivalent BCD number is:64176
+;------Menu--------
+;1.Hex to bcd
+;2.BCD to hex
+;3.Exit
+
+
+;Enter your choice:2
+
+;BCD to hex
+;Enter 5-digit BCD number: 64176
+
+;Equivalent BCD number is:FAB0
