@@ -3,8 +3,8 @@
 ;commands TYPE, COPY and DELETE using file operations. User is ;supposed to provide
 ;command line arguments in all cases
 ;ASSIGNMENT NO:7
-;ROll no:27
-;BATCH:S2
+;ROll no:82
+;BATCH:A4
 
 ;*******************************************************************
 
