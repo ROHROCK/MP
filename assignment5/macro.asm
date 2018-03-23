@@ -17,9 +17,9 @@
 %endmacro
 
 %macro fopen 1 ;take one argument where filename is taken ONLY
-  mov rax,2 ; IDK
+  mov rax,2 ; opcode for opening the file
   mov rdx,0770o ;opcode for file is found !
-  mov rsi,2 ;IDK
+  mov rsi,2 ;
   mov rdi,%1;the file address is pointed by RDI
   syscall
 %endmacro
