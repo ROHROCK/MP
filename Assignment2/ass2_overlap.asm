@@ -1,4 +1,5 @@
 ;
+%include "macro.asm"
 section .data
 menumsg db 10,10,'------MENU for overlapped Block Transfer----',10
         db 10,'1.Block Transfer without using string instructions'
@@ -16,61 +17,49 @@ position db 10,'Enter position to overlap::'
 pos_len equ $-position
 srcblk db 01h,02h,03h,04h,05h,00h,00h,00h,00h,00h
 cnt equ 05
-spacechar db 20h
+spacechar db 20h ;20h is ASCII for space
 lfmsg db 10,10
 
 section .bss
 optionbuff resb 02
 dispbuff resw 02
 pos resb 00
-%macro dispmsg 2
-      mov rax,01
-      mov rdi,01
-      mov rsi,%1
-      mov rdx,%2
-      syscall
-%endmacro
-%macro accept 2
-  mov rax,0
-  mov rdi,0
-  mov rsi,%1
-  mov rdx,%2
-  syscall
-%endmacro
 
 section .text
 global _start
 _start:
-dispmsg blk_bfrmsg,blk_bfrmsg_len
+print blk_bfrmsg,blk_bfrmsg_len
 call dispblk_proc
-menu: dispmsg menumsg,menumsg_len
+menu: print menumsg,menumsg_len
       accept optionbuff,02
-      cmp byte[optionbuff],'1'
+      mov al,[optionbuff]
+case1:
+      cmp al,'1'
       jne case2
-      dispmsg position,pos_len
+      print position,pos_len
       accept optionbuff,02
       call packnum_proc
       call blkxferwo_proc
       jmp exit1
 
-case2: cmp byte[optionbuff],'2'
+case2: cmp al,'2'
       jne case3
-      dispmsg position,pos_len
+      print position,pos_len
       accept optionbuff,02
       call packnum_proc
       call blkxferw_proc
       jmp exit1
 
 case3:
-       cmp byte [optionbuff],'3'
+       cmp al,'3'
        je ext
-       dispmsg wrchmsg,wrchmsg_len
+       print wrchmsg,wrchmsg_len
        jmp menu
 
 exit1:
-       dispmsg blk_afrmsg,blk_afrmsg_len
+       print blk_afrmsg,blk_afrmsg_len
        call dispblk_proc
-       dispmsg lfmsg,2
+       print lfmsg,2
 
 ext: mov rax,60
      mov rbx,0
@@ -88,7 +77,7 @@ rdisp:
       pop rsi
       inc rsi
       push rsi
-      dispmsg spacechar,1
+      print spacechar,1
       pop rsi
       pop rcx
       loop rdisp
@@ -105,7 +94,7 @@ blkup1:
   dec rsi
   dec rdi
   loop blkup1
-  ret
+ret
 blkxferw_proc:
   mov rsi,srcblk+4
   mov rdi,rsi
@@ -132,7 +121,7 @@ dskip:
   mov [rdi],dl
   inc rdi
   loop dup1
-  dispmsg dispbuff,2
+  print dispbuff,2
   ret
 
 packnum_proc:
