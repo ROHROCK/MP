@@ -10,7 +10,6 @@ charmsg db 10,"Number of character in the file: ",10
 charmsg_len equ $-charmsg
 
 section .bss
-
 scount resq 1 ; reserve 1 quad 2^64 memory
 linecount resq 1;same
 charcount resq 1 ;same
@@ -28,7 +27,7 @@ global _main
 _main:
 
 subprogram: ;procedure defined
-  xor rax,rax
+  xor rax,rax ;------------_CLEAR all the reg ---------------
   xor rbx,rbx
   xor rcx,rcx
   xor rsi,rsi

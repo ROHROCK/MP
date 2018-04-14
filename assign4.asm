@@ -1,6 +1,6 @@
 section .data
 nline db 10,10
-nline len: equ $-nline
+nline_len equ $-nline
 msg db 10,10,"MUL Assignment:"
 db 10,"------"
 msg_len equ $-msg
@@ -8,14 +8,12 @@ menu db 10,"-----Menu------"
 db 10,"1.Successive addition method"
 db 10,"2.Shift and add method"
 db 10,"3.Exit"
-db 10
 db 10,"Enter your choice:"
-menu_len : equ $-menu
+menu_len  equ $-menu
 n1msg db 10,"Enter two digit hex no1: "
-n1msg_len: equ $-n1msg
+n1msg_len equ $-n1msg
 n2msg db 10,"Enter two dig hex no2: "
-n2msg_len : equ $-n2msg
-
+n2msg_len equ $-n2msg
 resultSuccessive db 10,13,"Result of Successive addition is: "
 resultSuccessive_len equ $-resultSuccessive
 resultShift db 10,13,"Result of Shift and add is: "
@@ -45,10 +43,10 @@ syscall
   mov rdi,0
   mov rsi,%1 ;why %1 ???
   mov rdi,%2
+  syscall
 %endmacro
 
 %macro exit 0
-print nline,nline_len
 mov rax,60 ;;why 60 ?
 xor rdi,rdi ;clear the rdi register
 syscall ;;call the system
@@ -128,7 +126,7 @@ accept_16: ;label to adjust the ascii
   mov rcx,2 ;
   mov rsi,buf
 
-next_digit: ;label to convert dig toascii
+next_digit: ;label to convert dig to ascii
   shl bx,04 ;
   mov al,[rsi]
   cmp al,"0"

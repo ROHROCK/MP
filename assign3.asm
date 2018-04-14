@@ -93,7 +93,7 @@ xor rdx,rdx
 div rbx
 push dx
 inc byte[digitcount]
-cmp rax,0h
+cmp rax,0
 jne back
 print bmsg,bmsg_len
 
@@ -109,23 +109,22 @@ ret
 bcd_hex:
 print b2hmsg,b2hmsg_len
 read buf,buf_len
-mov rsi,buf
-xor rax,rax
-mov rbx,10
-mov rcx,05
+mov rsi,buf ;buf address to rsi
+xor rax,rax ;clear rax reg
+mov rbx,10 ;rbx = 10
+mov rcx,05 ; rcx = 5
 
 back1:
-xor rdx,rdx
-mul ebx
+xor rdx,rdx ;this will clear the rdx reg
+mul ebx ; AX * BX
+mov dl,[rsi] ; dl will contain the lower 8 bytes
+sub dl,30h ;sub 30 to ASCII -> HEX
+add rax,rdx;add the result to rax
+inc rsi ;to point to next digit
+dec rcx ;dec the loop
+jnz back1 ;jump to back1 when 0 is not encountered
 
-mov dl,[rsi]
-sub dl,30h
-
-add rax,rdx
-inc rsi
-dec rcx
-jnz back1
-mov [ans],ax
+mov [ans],ax ; save contents to ax reg as print procedure will be called
 print bmsg,bmsg_len
 mov ax,[ans]
 call display_16
@@ -140,15 +139,15 @@ mov rsi,buf
 next_digit:
 shl bx,04
 mov al,[rsi]
-cmp al,"0"
+cmp al,"0" ;If less then 0 ASCII range
 jb error
-cmp al,"9"
-jbe sub30
-cmp al,"A"
-jb error
-cmp al,"F"
-jbe sub37
-cmp al,"a"
+cmp al,"9" ;If 0-9 Range
+jbe sub30 ;substract 30 to bring it to decimal form
+cmp al,"A" ;If It is Less than A range
+jb error ;err
+cmp al,"F" ;If it is less than F range
+jbe sub37 ;subtract 37 to get A-F in memory
+cmp al,"a" ;same logic as above just the ASC
 jb error
 cmp al,"f"
 jbe sub57

@@ -39,7 +39,7 @@ _start: ;tell the compiler to to start the exectution from here
   dec rax ;dec rax as enter ASCII should no be included
   mov byte[filename + rax],0 ;set EOF to the address
   print charmsg,charmsg_len
-  read char,2
+  read char,2; HERE
 
   fopen filename
   cmp rax,-1H ;if file not found

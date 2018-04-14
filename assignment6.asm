@@ -43,7 +43,7 @@ section .text
     ;protmode function
     protmode:
       print msg2,msg2len
-      SGDT [GDTR] ;SGDT : store global/Interrupt DT
+      SGDT [GDTR] ;SGDT : store global DT
       SLDT [LDTR] ;SLDT : store Local DT
       SIDT [IDTR] ;SIDT : store Interrupt DT
       SMSW [MSW] ;SMSW : store Most Significant Word
@@ -86,7 +86,7 @@ section .text
       rol bx,4 ; rotate left bs reg by 4 times
       mov dl,bl ; content of bl to dl
       and dl,0fh ; and operation on dl with 0fh ASCII adjusment
-      cmp dl,09h ; compare dl with 9h
+      cmp dl,09h ; compare dl with 9
       jbe l2 ; jump to l2 if below and equal
       add dl,07h ; correct the number if > 9
 
