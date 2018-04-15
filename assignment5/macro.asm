@@ -1,5 +1,3 @@
-;DOUBTS ... Does it matter if i use RAX or AX or EAX size of register matters ?
-;and same for rsi or rdi does index register size affects the program
 %macro read 2
   mov rax,0 ;opcode of accepting the input form the user
   mov rdi,0 ;
@@ -48,7 +46,7 @@
 %endmacro
 
 %macro exit 0
-  mov ax,0
-  mov rdi,0
+  mov rax,60
+  mov rbx,0
   syscall
 %endmacro

@@ -53,5 +53,6 @@ _start: ;tell the compiler to to start the exectution from here
   jmp Exit
 
   Error: print errmsg,errmsg_len
-  Exit: print exitmsg,exitmsg_len
-  exit
+  Exit:
+    ;print exitmsg,exitmsg_len
+    exit

@@ -1,4 +1,3 @@
-;
 %include "macro.asm"
 section .data
 menumsg db 10,10,'------MENU for overlapped Block Transfer----',10
@@ -12,7 +11,7 @@ wrchmsg_len equ $-wrchmsg
 blk_bfrmsg db 10,'Block contents before transfer::'
 blk_bfrmsg_len equ $-blk_bfrmsg
 blk_afrmsg db 10,'Block contents after transfer::'
-blk_afrmsg_len equ $-blk_bfrmsg
+blk_afrmsg_len equ $-blk_afrmsg
 position db 10,'Enter position to overlap::'
 pos_len equ $-position
 srcblk db 01h,02h,03h,04h,05h,00h,00h,00h,00h,00h

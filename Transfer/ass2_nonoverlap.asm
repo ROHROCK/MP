@@ -12,7 +12,7 @@ blk_bfrmsg db 10,'Block transfer before transfer: '
 blk_bfrmsg_len equ $-blk_bfrmsg
 blk_afrmsg db 10,'Block transfer after transfer: '
 blk_afrmsg_len equ $-blk_afrmsg
-srcblk db 01h,02h,03h,04h,05h,00h,00h,00h,00h
+srcblk db 01h,02h,03h,04h,05h,00h,00h,00h,00h,00h
 cnt equ 05
 spacechar db 20h
 lfmsg db 10,10
