@@ -10,7 +10,7 @@ charmsg db 10,"Number of character in the file: ",10
 charmsg_len equ $-charmsg
 
 section .bss
-scount resq 1 ; reserve 1 quad 2^64 memory
+scount resq 1 ; reserve 8 bytes
 linecount resq 1;same
 charcount resq 1 ;same
 

@@ -1,13 +1,3 @@
-;******************************************************************
-;Write X86 menu driven Assembly Language Program (ALP) to implement ;OS (DOS)
-;commands TYPE, COPY and DELETE using file operations. User is ;supposed to provide
-;command line arguments in all cases
-;ASSIGNMENT NO:7
-;ROll no:82
-;BATCH:A4
-
-;*******************************************************************
-
 %macro cmn 4			;input/output
 	mov rax,%1
 	mov rdi,%2
@@ -322,29 +312,3 @@ cont1:	mov al,[rsi]
 
 skip2:
 ret
-;------OUTPUT--------
-;./fileoperation
-;MENU :
-;1. TYPE
-;2. COPY
-;3. DELETE
-;4. Exit
-;Enter your choice : 1
-;Command : type test.txt
-;this is a test file
-;MENU :
-;1. TYPE
-;2. COPY
-;3. DELETE
-;4. Exit
-;Enter your choice : 2
-;Command : copy test2.txt test.txt
-;File copied successfully !!
-;MENU :
-;1. TYPE
-;2. COPY
-;3. DELETE
-;4. Exit
-;Enter your choice : 3
-;Command : del test2.txt
-;File deleted successfully !!
